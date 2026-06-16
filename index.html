@@ -1,0 +1,2797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Good HR | Senior HR Leadership & Advisory</title>
+  <meta name="description" content="Good HR is a consulting practice delivering senior-level HR leadership, people operations, and advisory support on an interim, project, or fractional basis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================
+       DESIGN TOKENS
+    ============================================ */
+    :root {
+      --ink:        #1a1f2e;
+      --ink-soft:   #3a404f;
+      --cream:      #f7f3ed;
+      --cream-dark: #ede8e0;
+      --sage:       #3a6b4f;
+      --sage-light: #4f8a68;
+      --sage-pale:  #e8f0eb;
+      --gold:       #b8933e;
+      --gold-light: #d4aa5a;
+      --white:      #ffffff;
+      --border:     rgba(26,31,46,0.12);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  4rem;
+      --space-xl:  7rem;
+      --space-2xl: 10rem;
+
+      --radius:    4px;
+      --radius-lg: 12px;
+
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================
+       RESET & BASE
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--cream);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+
+    /* ============================================
+       GRAIN OVERLAY
+    ============================================ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ============================================
+       TYPOGRAPHY SCALE
+    ============================================ */
+    .display-xl {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 7.5rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    .display-lg {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+
+    .display-md {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .body-lg { font-size: 1.125rem; line-height: 1.75; font-weight: 300; }
+    .body-md { font-size: 1rem; line-height: 1.7; font-weight: 300; }
+    .body-sm { font-size: 0.875rem; line-height: 1.65; }
+
+    /* ============================================
+       LAYOUT UTILITIES
+    ============================================ */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .section { padding: var(--space-xl) 0; }
+    .section-sm { padding: var(--space-lg) 0; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); align-items: start; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
+
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .gap-sm { gap: var(--space-sm); }
+    .gap-md { gap: var(--space-md); }
+
+    /* ============================================
+       DIVIDERS
+    ============================================ */
+    .rule {
+      width: 48px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    .rule-gold {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* ============================================
+       BUTTONS
+    ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.5rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: var(--sage);
+      color: var(--white);
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--sage-light);
+      transform: translateX(-100%);
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover::after { transform: translateX(0); }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-primary svg { position: relative; z-index: 1; transition: transform var(--transition); }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    .btn-outline {
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .btn-ghost {
+      color: var(--sage);
+      padding: 0;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-ghost::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--sage);
+      transition: width var(--transition);
+    }
+
+    .btn-ghost:hover::after { width: 100%; }
+    .btn-ghost { position: relative; }
+    .btn-ghost svg { transition: transform var(--transition); }
+    .btn-ghost:hover svg { transform: translateX(4px); }
+
+    /* ============================================
+       NAVIGATION
+    ============================================ */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    #nav.scrolled {
+      background: rgba(247, 243, 237, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+      transition: padding var(--transition);
+    }
+
+    #nav.scrolled .nav-inner { padding-top: 1rem; padding-bottom: 1rem; }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-logo-mark {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .nav-logo-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--sage);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      padding: 0.65rem 1.5rem;
+      background: var(--sage);
+      color: var(--white) !important;
+      font-size: 0.75rem !important;
+      transition: background var(--transition) !important;
+    }
+
+    .nav-cta:hover { background: var(--sage-light) !important; }
+    .nav-cta::after { display: none !important; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: var(--transition);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    #hero {
+      min-height: 100svh;
+      background: var(--ink);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(58, 107, 79, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(184, 147, 62, 0.12) 0%, transparent 50%),
+        linear-gradient(160deg, #1a1f2e 0%, #0e1420 100%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(6rem, 15vw, 12rem) clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vw, 7rem);
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-eyebrow .label { color: rgba(255,255,255,0.5); }
+    .hero-eyebrow .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .hero-headline {
+      color: var(--white);
+      max-width: 900px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .hero-sub {
+      margin-top: 2.5rem;
+      max-width: 520px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
+    }
+
+    .hero-actions {
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+
+    .hero-stat-row {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-stat {
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-stat:last-child { border-right: none; }
+
+    .hero-stat-number {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.4rem;
+    }
+
+    .btn-light {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 1rem 2.5rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-light:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    /* ============================================
+       MARQUEE
+    ============================================ */
+    .marquee-section {
+      background: var(--sage);
+      padding: 1.1rem 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .marquee-sep {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ============================================
+       ABOUT / INTRO STRIP
+    ============================================ */
+    #intro {
+      padding: var(--space-xl) 0;
+      background: var(--white);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .intro-left .label { color: var(--sage); margin-bottom: 1.5rem; }
+
+    .intro-right p {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    .intro-right p strong {
+      font-weight: 500;
+      color: var(--sage);
+    }
+
+    .intro-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .tag {
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink-soft);
+      background: transparent;
+      transition: var(--transition);
+    }
+
+    .tag:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+      background: var(--sage-pale);
+    }
+
+    /* ============================================
+       SERVICES
+    ============================================ */
+    #services {
+      background: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--space-lg);
+      gap: 2rem;
+    }
+
+    .section-header-left .label { color: var(--sage); margin-bottom: 1rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      background: var(--cream);
+      padding: 2.5rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--sage);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .service-card:hover { background: var(--white); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--sage-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon {
+      background: var(--sage);
+    }
+
+    .service-card:hover .service-icon svg { color: var(--white); }
+
+    .service-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--sage);
+      transition: var(--transition);
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .service-list li {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .service-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0;
+      margin-top: 0.42rem;
+    }
+
+    /* ============================================
+       ABOUT SECTION
+    ============================================ */
+    #about {
+      background: var(--ink);
+      padding: var(--space-xl) 0;
+      overflow: hidden;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-frame {
+      position: relative;
+      aspect-ratio: 4/5;
+      background: var(--sage);
+      overflow: hidden;
+    }
+
+    .about-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, rgba(58,107,79,0.6), rgba(26,31,46,0.8));
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+
+    .about-image-quote {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+    }
+
+    .about-accent-box {
+      position: absolute;
+      bottom: -2rem;
+      right: -2rem;
+      width: 140px;
+      height: 140px;
+      background: var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    .about-accent-box .num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .about-accent-box .lbl {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+    }
+
+    .about-content .label { color: var(--sage-light); margin-bottom: 1.5rem; }
+
+    .about-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .about-content h2 em {
+      font-style: italic;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .about-content p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.975rem;
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .credential-item {
+      padding: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .credential-item .cred-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .credential-item .cred-value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    /* ============================================
+       PROCESS
+    ============================================ */
+    #process {
+      background: var(--white);
+      padding: var(--space-xl) 0;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: calc(16.67% + 1rem);
+      right: calc(16.67% + 1rem);
+      height: 1px;
+      background: linear-gradient(90deg, var(--sage), var(--gold), var(--sage));
+      opacity: 0.3;
+    }
+
+    .process-step {
+      padding: 3rem 2.5rem;
+      position: relative;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .process-step:last-child { border-right: none; }
+
+    .process-num {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      background: var(--cream);
+      position: relative;
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    .process-step:hover .process-num {
+      background: var(--sage);
+      color: var(--white);
+      border-color: var(--sage);
+    }
+
+    .process-step h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .process-step p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ============================================
+       WHY GOOD HR
+    ============================================ */
+    #why {
+      background: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .why-left .label { color: var(--sage); margin-bottom: 1.5rem; }
+    .why-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .why-left p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .why-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .why-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      padding: 1.75rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .why-item:hover {
+      border-color: var(--sage);
+      transform: translateX(6px);
+    }
+
+    .why-item-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--sage-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .why-item-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--sage);
+    }
+
+    .why-item h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .why-item p {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ============================================
+       INDUSTRIES
+    ============================================ */
+    #industries {
+      background: var(--ink);
+      padding: var(--space-lg) 0;
+    }
+
+    .industries-inner {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xl);
+    }
+
+    .industries-label {
+      flex-shrink: 0;
+    }
+
+    .industries-label .label { color: var(--sage-light); }
+
+    .industries-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .industry-pill {
+      padding: 0.6rem 1.4rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.04em;
+      transition: var(--transition);
+    }
+
+    .industry-pill:hover {
+      border-color: var(--sage-light);
+      color: var(--white);
+      background: rgba(58,107,79,0.2);
+    }
+
+    /* ============================================
+       RESOURCES
+    ============================================ */
+    #resources {
+      background: var(--white);
+      padding: var(--space-xl) 0;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: var(--space-lg);
+    }
+
+    .resource-card {
+      border: 1px solid var(--border);
+      background: var(--cream);
+      transition: var(--transition);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .resource-card:hover {
+      border-color: var(--sage);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(58,107,79,0.12);
+    }
+
+    .resource-card-top {
+      padding: 2rem;
+      background: var(--sage);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .resource-card-top svg {
+      width: 28px;
+      height: 28px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .resource-type {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.12);
+      padding: 0.3rem 0.75rem;
+    }
+
+    .resource-card-body {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .resource-card-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .resource-card-body p {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      font-weight: 300;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .resource-card-footer {
+      padding: 1.25rem 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .resource-price {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--sage);
+    }
+
+    .resource-price.free { color: var(--gold); }
+
+    /* ============================================
+       TESTIMONIALS
+    ============================================ */
+    #testimonials {
+      background: var(--cream-dark);
+      padding: var(--space-xl) 0;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: var(--space-lg);
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(26,31,46,0.08);
+    }
+
+    .testimonial-quote-mark {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      line-height: 0.8;
+      color: var(--sage-pale);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .testimonial-card p {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--sage-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--sage);
+    }
+
+    .testimonial-info .name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .testimonial-info .role {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    /* ============================================
+       FAQ
+    ============================================ */
+    #faq {
+      background: var(--white);
+      padding: var(--space-xl) 0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .faq-left .label { color: var(--sage); margin-bottom: 1.5rem; }
+    .faq-left h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .faq-left p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      font-weight: 300;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question span {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .faq-icon svg {
+      width: 14px;
+      height: 14px;
+      color: var(--ink-soft);
+      transition: transform var(--transition);
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+
+    .faq-item.open .faq-icon svg {
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding-bottom: 1.5rem;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    .faq-answer p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ============================================
+       CTA BAND
+    ============================================ */
+    #cta-band {
+      background: var(--sage);
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 120% at 80% 50%, rgba(184,147,62,0.25), transparent);
+    }
+
+    .cta-band-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .cta-band-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .cta-band-text p {
+      margin-top: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.975rem;
+      font-weight: 300;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--sage);
+      padding: 1.1rem 2.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: var(--transition);
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .btn-white:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       CONTACT
+    ============================================ */
+    #contact {
+      background: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .contact-info .label { color: var(--sage); margin-bottom: 1.5rem; }
+
+    .contact-info h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--sage-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--sage);
+    }
+
+    .contact-detail-text .det-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-detail-text .det-value {
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .contact-form-wrap {
+      background: var(--white);
+      padding: 3rem;
+      border: 1px solid var(--border);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--ink);
+      outline: none;
+      transition: var(--transition);
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--sage);
+      background: var(--white);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 130px; }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%233a404f' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--sage);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .form-submit:hover { background: var(--sage-light); }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      background: var(--ink);
+      padding: var(--space-lg) 0 2rem;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: var(--space-lg);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand .logo {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-brand .tagline {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-col li a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      transition: color var(--transition);
+    }
+
+    .footer-col li a:hover { color: var(--white); }
+
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-bottom a {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      transition: color var(--transition);
+    }
+
+    .footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    /* ============================================
+       SCROLL ANIMATIONS
+    ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      
+      .grid-2,
+      .intro-grid,
+      .about-grid,
+      .why-grid,
+      .faq-grid,
+      .contact-grid { grid-template-columns: 1fr; }
+
+      .hero-stat-row { grid-template-columns: 1fr; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .hero-stat:last-child { border-bottom: none; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .resources-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-grid::before { display: none; }
+      .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+
+      .industries-inner { flex-direction: column; align-items: flex-start; }
+      .cta-band-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+      .about-accent-box { width: 100px; height: 100px; bottom: -1rem; right: -1rem; }
+      .about-accent-box .num { font-size: 2rem; }
+    }
+
+    /* ============================================
+       SUCCESS MESSAGE
+    ============================================ */
+    .form-success {
+      display: none;
+      padding: 2rem;
+      background: var(--sage-pale);
+      border: 1px solid var(--sage);
+      text-align: center;
+    }
+
+    .form-success.visible { display: block; }
+
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--sage);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+  ============================================ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-mark">Good HR</span>
+        <span class="nav-logo-sub">People Operations &amp; Advisory</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#resources">Resources</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-cta">Work Together</a>
+      </div>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#resources" class="mobile-link">Resources</a>
+    <a href="#process" class="mobile-link">Process</a>
+    <a href="#faq" class="mobile-link">FAQ</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- ============================================
+       HERO
+  ============================================ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="label">Good HR</span>
+        <span class="dot"></span>
+        <span class="label">Pembroke Pines, FL</span>
+      </div>
+
+      <h1 class="display-xl hero-headline">
+        Senior HR<br />
+        leadership <em>when</em><br />
+        it matters most.
+      </h1>
+
+      <p class="hero-sub">
+        People decisions carry business risk. Good HR provides experienced ownership of the people function — on your timeline, at the level your organization needs.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">
+          <span>Start a Conversation</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#services" class="btn-light">
+          View Services
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-number">8+</div>
+        <div class="hero-stat-label">Years in HR Leadership</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">4</div>
+        <div class="hero-stat-label">Industries Served</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">100%</div>
+        <div class="hero-stat-label">End-to-End Ownership</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       MARQUEE
+  ============================================ -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item">People Operations <span class="marquee-sep"></span></div>
+      <div class="marquee-item">HRIS Implementation <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Employee Relations <span class="marquee-sep"></span></div>
+      <div class="marquee-item">HR Strategy <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Compliance &amp; Risk <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Change Management <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Fractional HR Leadership <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Workforce Planning <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Organizational Design <span class="marquee-sep"></span></div>
+      <div class="marquee-item">HR Technology <span class="marquee-sep"></span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item">People Operations <span class="marquee-sep"></span></div>
+      <div class="marquee-item">HRIS Implementation <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Employee Relations <span class="marquee-sep"></span></div>
+      <div class="marquee-item">HR Strategy <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Compliance &amp; Risk <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Change Management <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Fractional HR Leadership <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Workforce Planning <span class="marquee-sep"></span></div>
+      <div class="marquee-item">Organizational Design <span class="marquee-sep"></span></div>
+      <div class="marquee-item">HR Technology <span class="marquee-sep"></span></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       INTRO
+  ============================================ -->
+  <section id="intro">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="intro-left reveal">
+          <div class="label" style="color:var(--sage); margin-bottom:1.5rem;">What We Do</div>
+          <div class="rule"></div>
+        </div>
+        <div class="intro-right reveal reveal-delay-2">
+          <p>
+            Good HR is a consulting practice focused on <strong>how organizations make people decisions</strong> — and how those decisions carry forward. Built for businesses that need HR done right, not just done.
+          </p>
+          <div class="intro-tags">
+            <span class="tag">Interim Leadership</span>
+            <span class="tag">People Operations</span>
+            <span class="tag">HRIS</span>
+            <span class="tag">Employee Relations</span>
+            <span class="tag">Compliance</span>
+            <span class="tag">Organizational Design</span>
+            <span class="tag">Workforce Planning</span>
+            <span class="tag">Change Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SERVICES
+  ============================================ -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <div class="label">Services</div>
+          <h2 class="display-md" style="margin-top:1rem;">What Good HR delivers.</h2>
+        </div>
+        <p style="max-width:360px; font-size:0.9rem; color:var(--ink-soft); font-weight:300; line-height:1.7;">
+          Engagements are structured around what your organization needs — not a templated service menu. Every scope is defined to outcome.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- People Operations -->
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>People Operations</h3>
+          <p>Designing and owning the systems that keep HR running effectively — from how decisions get made to how they're measured and carried forward.</p>
+          <ul class="service-list">
+            <li>Workforce planning &amp; analytics</li>
+            <li>Performance management frameworks</li>
+            <li>Talent strategy &amp; retention programs</li>
+            <li>Org effectiveness &amp; headcount modeling</li>
+          </ul>
+        </div>
+
+        <!-- HR Technology -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3>HR Technology</h3>
+          <p>Configuring, implementing, and optimizing HR systems so your data, workflows, and reporting actually reflect how your organization operates.</p>
+          <ul class="service-list">
+            <li>Workday HCM &amp; ADP implementation</li>
+            <li>HRIS audits &amp; data governance</li>
+            <li>System selection &amp; vendor evaluation</li>
+            <li>Leave management platform rollouts</li>
+          </ul>
+        </div>
+
+        <!-- Employee Relations -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h3>Employee Relations</h3>
+          <p>Navigating complex workplace situations with legal grounding, procedural rigor, and good judgment — before small issues become expensive ones.</p>
+          <ul class="service-list">
+            <li>Investigations &amp; ER case management</li>
+            <li>PIP design &amp; termination support</li>
+            <li>Policy drafting &amp; handbook updates</li>
+            <li>Multi-jurisdictional compliance</li>
+          </ul>
+        </div>
+
+        <!-- Workplace Experience -->
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Workplace Experience</h3>
+          <p>Building the infrastructure — programs, processes, and culture — that makes employees actually want to show up and do good work.</p>
+          <ul class="service-list">
+            <li>Onboarding &amp; offboarding systems</li>
+            <li>Total rewards review &amp; benchmarking</li>
+            <li>Engagement strategy &amp; pulse programs</li>
+            <li>DEI framework implementation</li>
+          </ul>
+        </div>
+
+        <!-- Change Management -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10"/>
+              <path d="M12 8v4l3 3"/>
+              <path d="M2 17l3-3 3 3"/>
+            </svg>
+          </div>
+          <h3>Change Management</h3>
+          <p>Leading the people side of organizational transitions — M&amp;A, restructuring, leadership change — with a clear plan and consistent execution.</p>
+          <ul class="service-list">
+            <li>RIF &amp; workforce transition planning</li>
+            <li>Merger &amp; acquisition HR integration</li>
+            <li>Leadership transition support</li>
+            <li>Communication strategy &amp; execution</li>
+          </ul>
+        </div>
+
+        <!-- Fractional Leadership -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+              <polyline points="2 17 12 22 22 17"/>
+              <polyline points="2 12 12 17 22 12"/>
+            </svg>
+          </div>
+          <h3>Fractional HR Leadership</h3>
+          <p>Senior-level HR ownership without the full-time cost — covering gaps, scaling capability, or leading strategic initiatives on a defined engagement.</p>
+          <ul class="service-list">
+            <li>Interim CHRO / Head of People coverage</li>
+            <li>HR function build-out for scaling orgs</li>
+            <li>Board &amp; executive advisory support</li>
+            <li>HR Shared Services design &amp; buildout</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ABOUT
+  ============================================ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap reveal">
+          <div class="about-image-frame">
+            <div class="about-image-placeholder">
+              <!-- Replace the div below with an <img> tag pointing to Christina's photo -->
+              <p class="about-image-quote">"Structure where HR processes, systems, or governance need to be built or reset."</p>
+            </div>
+          </div>
+          <div class="about-accent-box">
+            <span class="num">8+</span>
+            <span class="lbl">Years of Experience</span>
+          </div>
+        </div>
+
+        <div class="about-content reveal reveal-delay-2">
+          <div class="label">About the Founder</div>
+          <h2>Christina Kidd,<br /><em>Principal Consultant</em></h2>
+
+          <p>
+            Good HR was built on a simple premise: people decisions are business decisions. They carry legal, operational, and cultural risk — and they deserve the same rigor applied to any critical business function.
+          </p>
+          <p>
+            With a foundation in Legal Compliance, I bring a disciplined approach to HR leadership that most practitioners don't have. I've led the people function across fintech, healthcare, education, and enterprise environments — often during transition, growth, or uncertainty — and I carry that experience into every engagement.
+          </p>
+          <p>
+            When you work with Good HR, you're not getting a generalist on a call. You're getting end-to-end ownership from someone who has operated at every level of the people function and understands how decisions compound over time.
+          </p>
+
+          <div class="about-credentials">
+            <div class="credential-item">
+              <div class="cred-label">Education</div>
+              <div class="cred-value">BS, Information Technology</div>
+            </div>
+            <div class="credential-item">
+              <div class="cred-label">Background</div>
+              <div class="cred-value">Legal Compliance &amp; HR</div>
+            </div>
+            <div class="credential-item">
+              <div class="cred-label">Specialization</div>
+              <div class="cred-value">Workday HCM · ADP WFN</div>
+            </div>
+            <div class="credential-item">
+              <div class="cred-label">Scope</div>
+              <div class="cred-value">Multi-jurisdiction · Enterprise</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2.5rem;">
+            <a href="#contact" class="btn btn-primary">
+              <span>Work with Christina</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROCESS
+  ============================================ -->
+  <section id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <div class="label">The Process</div>
+          <h2 class="display-md" style="margin-top:1rem;">Clear from day one.</h2>
+        </div>
+        <p style="max-width:380px; font-size:0.9rem; color:var(--ink-soft); font-weight:300; line-height:1.7;">
+          Every engagement starts with understanding what's actually happening — not just what's documented. From there, work begins with full accountability.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="process-num">01</div>
+          <h3>Connect</h3>
+          <p>An introductory conversation to understand what is happening and what matters most right now. No intake forms, no junior staff — direct dialogue from the start.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">02</div>
+          <h3>Align</h3>
+          <p>Scope, priorities, and expectations are defined so the work is clear before it begins. Deliverables, timeline, and communication cadence are established upfront.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-num">03</div>
+          <h3>Lead</h3>
+          <p>Good HR takes ownership and carries the work forward with discretion and follow-through. You stay informed without being in the weeds of every decision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       WHY GOOD HR
+  ============================================ -->
+  <section id="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-left reveal">
+          <div class="label">Why Good HR</div>
+          <h2 class="display-md" style="margin-top:1rem; margin-bottom:1.5rem;">HR that holds up <br/>operationally, legally, <br/>and culturally.</h2>
+          <p>
+            Most organizations engage HR support when something has already gone wrong. Good HR is designed to prevent that — and when something does go wrong, to resolve it quickly and defensibly.
+          </p>
+          <p>
+            The work is delivered with the same rigor a general counsel applies to legal risk. That means documentation standards, decision trails, and solutions that don't create the next problem.
+          </p>
+          <a href="#contact" class="btn-ghost" style="margin-top:1rem;">
+            Let's talk about your situation
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="why-list reveal reveal-delay-2">
+          <div class="why-item">
+            <div class="why-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Legal foundation, not afterthought</h4>
+              <p>HR grounded in legal compliance from the start — not patched in after the fact. Risk is identified before it accumulates.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Ownership, not oversight</h4>
+              <p>Good HR takes decisions end to end. You don't manage the work — you receive outcomes.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Adaptable scope, consistent standards</h4>
+              <p>Engagements flex to what's needed. The rigor, discretion, and quality of execution don't.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Data-informed decisions</h4>
+              <p>People decisions backed by workforce analytics, not instinct. Strategy grounded in what the numbers actually show.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       INDUSTRIES
+  ============================================ -->
+  <section id="industries">
+    <div class="container">
+      <div class="industries-inner">
+        <div class="industries-label">
+          <div class="label">Industries</div>
+        </div>
+        <div class="industries-grid">
+          <span class="industry-pill">Fintech &amp; Financial Services</span>
+          <span class="industry-pill">Healthcare &amp; Health Systems</span>
+          <span class="industry-pill">Education &amp; EdTech</span>
+          <span class="industry-pill">Enterprise &amp; Corporate</span>
+          <span class="industry-pill">SaaS &amp; Technology</span>
+          <span class="industry-pill">Nonprofits &amp; Mission-Driven Orgs</span>
+          <span class="industry-pill">Professional Services</span>
+          <span class="industry-pill">Startups &amp; Growth-Stage</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       RESOURCES
+  ============================================ -->
+  <section id="resources">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header-left">
+          <div class="label">Resources</div>
+          <h2 class="display-md" style="margin-top:1rem;">Practical HR tools <br/>you can use now.</h2>
+        </div>
+        <p style="max-width:380px; font-size:0.9rem; color:var(--ink-soft); font-weight:300; line-height:1.7;">
+          Built from real engagements. These are the frameworks, templates, and guides Good HR uses in practice — packaged for organizations that want to move forward without waiting for a full engagement.
+        </p>
+      </div>
+
+      <div class="resources-grid">
+
+        <div class="resource-card reveal">
+          <div class="resource-card-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            <span class="resource-type">Template</span>
+          </div>
+          <div class="resource-card-body">
+            <h3>HR Audit &amp; Compliance Checklist</h3>
+            <p>A comprehensive self-audit tool covering policy documentation, I-9 compliance, leave management, wage and hour, and HR recordkeeping requirements. Used by Good HR at the start of every new engagement.</p>
+          </div>
+          <div class="resource-card-footer">
+            <span class="resource-price">$49</span>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size:0.75rem;">
+              <span>Get Access</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="resource-card reveal reveal-delay-1">
+          <div class="resource-card-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+            <span class="resource-type">Framework</span>
+          </div>
+          <div class="resource-card-body">
+            <h3>Employee Investigation Playbook</h3>
+            <p>Step-by-step framework for conducting defensible workplace investigations — from initial intake through final determination. Includes interview guides, documentation templates, and decision trees.</p>
+          </div>
+          <div class="resource-card-footer">
+            <span class="resource-price">$89</span>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size:0.75rem;">
+              <span>Get Access</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="resource-card reveal reveal-delay-2">
+          <div class="resource-card-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span class="resource-type">Free Guide</span>
+          </div>
+          <div class="resource-card-body">
+            <h3>5 HR Risks Every Growing Company Ignores</h3>
+            <p>The most common people-function gaps that create legal and operational exposure — and the straightforward fixes. Written for founders, operators, and leaders who didn't hire an HR person yet.</p>
+          </div>
+          <div class="resource-card-footer">
+            <span class="resource-price free">Free</span>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size:0.75rem;">
+              <span>Download</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="resource-card reveal">
+          <div class="resource-card-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <line x1="23" y1="11" x2="17" y2="11"/>
+            </svg>
+            <span class="resource-type">Template Pack</span>
+          </div>
+          <div class="resource-card-body">
+            <h3>Manager's People Decision Toolkit</h3>
+            <p>Documentation templates for performance conversations, PIPs, terminations, and promotions. Designed to give managers confidence and reduce HR liability in the decisions they're making every day.</p>
+          </div>
+          <div class="resource-card-footer">
+            <span class="resource-price">$69</span>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size:0.75rem;">
+              <span>Get Access</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="resource-card reveal reveal-delay-1">
+          <div class="resource-card-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            <span class="resource-type">Assessment</span>
+          </div>
+          <div class="resource-card-body">
+            <h3>HRIS Readiness Assessment</h3>
+            <p>Before you buy new HR technology, know what you're actually ready for. This assessment evaluates your data quality, process maturity, and change readiness — and tells you what to fix first.</p>
+          </div>
+          <div class="resource-card-footer">
+            <span class="resource-price">$39</span>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size:0.75rem;">
+              <span>Get Access</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="resource-card reveal reveal-delay-2" style="background: var(--ink); border-color: var(--ink);">
+          <div class="resource-card-top" style="background: rgba(255,255,255,0.06);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span class="resource-type" style="color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.08);">Newsletter</span>
+          </div>
+          <div class="resource-card-body" style="background: var(--ink);">
+            <h3 style="color: var(--white);">The Good HR Brief</h3>
+            <p style="color: rgba(255,255,255,0.5);">Practical insight on people operations, employment law updates, and HR leadership — delivered to your inbox. No fluff. Written for operators, not HR academics.</p>
+          </div>
+          <div class="resource-card-footer" style="border-top-color: rgba(255,255,255,0.08); background: var(--ink);">
+            <span class="resource-price free">Free</span>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size:0.75rem;">
+              <span>Subscribe</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       TESTIMONIALS
+  ============================================ -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-header-left">
+          <div class="label">Client Perspectives</div>
+          <h2 class="display-md" style="margin-top:1rem;">What clients say.</h2>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-quote-mark">"</div>
+          <p>Structure where HR processes, systems, or governance need to be built or reset. That's exactly what Christina delivered — and then some.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">L</div>
+            <div class="testimonial-info">
+              <div class="name">Luisa H.</div>
+              <div class="role">Former Client · Operations Leadership</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-quote-mark">"</div>
+          <p>We needed someone who could come in, understand the business quickly, and make real decisions. Good HR didn't just advise — they owned the work.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-info">
+              <div class="name">Marcus T.</div>
+              <div class="role">CEO · Growth-Stage SaaS Company</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-4">
+          <div class="testimonial-quote-mark">"</div>
+          <p>The combination of legal compliance background and deep HR operational experience is rare. It shows in how problems get framed — and solved.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div class="testimonial-info">
+              <div class="name">Rachel D.</div>
+              <div class="role">VP People · Healthcare Organization</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FAQ
+  ============================================ -->
+  <section id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-left reveal">
+          <div class="label">FAQ</div>
+          <h2 class="display-md" style="margin-top:1rem;">Common questions.</h2>
+          <p style="margin-top:1.5rem;">
+            Still have questions? Reach out directly and we'll talk through whether Good HR is the right fit for your organization.
+          </p>
+          <a href="#contact" class="btn btn-outline" style="margin-top:2rem;">Get in Touch</a>
+        </div>
+
+        <div class="faq-list reveal reveal-delay-2">
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>What types of organizations does Good HR work with?</span>
+              <div class="faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer">
+              <p>Good HR works with companies across fintech, healthcare, education, and enterprise environments — from growth-stage startups building HR from the ground up to established mid-market organizations navigating transition, compliance gaps, or leadership change. If you have a people function that needs ownership, we're likely a fit.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>How are engagements structured?</span>
+              <div class="faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer">
+              <p>Engagements are structured on an interim, project, or advisory basis depending on what the organization needs. Scope, timeline, and deliverables are defined upfront before work begins. Pricing is engagement-specific — retainer, project-based, or hourly depending on the nature of the work.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>Do you work remotely or on-site?</span>
+              <div class="faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer">
+              <p>Good HR works both remotely and in-person. The right model depends on the engagement — some work requires physical presence, particularly for sensitive ER matters or organizational change. Most operational and advisory work can be handled fully remote. We discuss this during the initial scoping conversation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>What's the difference between a fractional and interim engagement?</span>
+              <div class="faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer">
+              <p>A fractional engagement means Good HR operates as a part-time embedded HR leader — typically a defined number of hours per week or month — on an ongoing basis. An interim engagement is full-time (or near-full-time) coverage for a defined period, often during a leadership transition, leave, or organizational change. Both involve full ownership of the work.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>How quickly can an engagement begin?</span>
+              <div class="faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer">
+              <p>For most engagements, Good HR can begin within 1–2 weeks of an executed agreement. For urgent matters — active ER situations, critical compliance gaps, leadership departures — timelines can be compressed. Reach out and we'll discuss what's feasible given your situation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>What systems and tools do you work with?</span>
+              <div class="faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </div>
+            </button>
+            <div class="faq-answer">
+              <p>Core expertise includes Workday HCM and ADP Workforce Now for HRIS. Good HR also works across ServiceNow, Greenhouse, Jira, and most major ATS and HRIS platforms. For organizations evaluating new systems, Good HR can support vendor selection, requirements gathering, and implementation oversight regardless of platform.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA BAND
+  ============================================ -->
+  <section id="cta-band">
+    <div class="container">
+      <div class="cta-band-inner">
+        <div class="cta-band-text reveal">
+          <h2>Ready to talk about what<br />your organization needs?</h2>
+          <p>No intake forms, no junior staff. A direct conversation with Christina.</p>
+        </div>
+        <a href="#contact" class="btn-white reveal reveal-delay-2">Start the Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+  ============================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="label">Contact</div>
+          <h2 class="display-md" style="margin-top:1rem;">Let's talk about<br />your situation.</h2>
+          <p>
+            Every engagement starts with a conversation. Tell us what's happening and what matters most — we'll take it from there.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="contact-detail-text">
+                <div class="det-label">Email</div>
+                <div class="det-value">info@goodhumanresources.com</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="contact-detail-text">
+                <div class="det-label">Location</div>
+                <div class="det-value">15757 Pines Blvd, Pembroke Pines, FL 33027</div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="contact-detail-text">
+                <div class="det-label">Response Time</div>
+                <div class="det-value">Within 24 hours on business days</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal reveal-delay-2">
+          <div id="formSuccess" class="form-success">
+            <h3>Message received.</h3>
+            <p>Christina will be in touch within one business day. Thank you for reaching out.</p>
+          </div>
+
+          <div id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" placeholder="Christina" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" placeholder="Kidd" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company / Organization</label>
+              <input type="text" id="company" placeholder="Good HR" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" placeholder="you@company.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="(555) 000-0000" />
+            </div>
+
+            <div class="form-group">
+              <label for="serviceType">What brings you here?</label>
+              <select id="serviceType">
+                <option value="">Select a service area</option>
+                <option>People Operations</option>
+                <option>HR Technology / HRIS</option>
+                <option>Employee Relations</option>
+                <option>Change Management</option>
+                <option>Fractional / Interim HR Leadership</option>
+                <option>HR Audit or Compliance</option>
+                <option>Resources / Templates</option>
+                <option>Something else</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell us what's happening *</label>
+              <textarea id="message" placeholder="Describe your situation — what's happening, what matters most right now, and what you're hoping to accomplish." required></textarea>
+            </div>
+
+            <button class="form-submit" onclick="handleSubmit(event)">
+              Send Message
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+
+            <p class="form-note">Your information is kept confidential and will only be used to respond to your inquiry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+  ============================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">Good HR</div>
+          <div class="tagline">People Operations &amp; Advisory</div>
+          <p>Senior-level HR leadership and advisory support for organizations that need the people function done right. Delivered on an interim, project, or fractional basis.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">People Operations</a></li>
+            <li><a href="#services">HR Technology</a></li>
+            <li><a href="#services">Employee Relations</a></li>
+            <li><a href="#services">Change Management</a></li>
+            <li><a href="#services">Fractional Leadership</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Christina</a></li>
+            <li><a href="#process">How It Works</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#testimonials">Client Perspectives</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#contact">Start a Conversation</a></li>
+            <li><a href="mailto:info@goodhumanresources.com">info@goodhumanresources.com</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#resources">Newsletter</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Good HR · Pembroke Pines, FL · All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       JAVASCRIPT
+  ============================================ -->
+  <script>
+    // ── Navigation scroll state ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── Mobile menu ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ── Scroll reveal ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // ── FAQ accordion ──
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ── Contact form ──
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById('firstName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!firstName || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      // Show success message
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('visible');
+
+      // Scroll success into view
+      document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // ── Smooth anchor scroll offset for fixed nav ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
