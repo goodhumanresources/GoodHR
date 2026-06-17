@@ -196,6 +196,7 @@
     .nav-logo {
       display: flex;
       align-items: center;
+      transition: opacity var(--dur) var(--ease);
     }
     .nav-logo-img {
       height: 44px;
@@ -205,6 +206,21 @@
       mix-blend-mode: multiply;
     }
     #nav.scrolled .nav-logo-img { height: 38px; }
+
+    /* Hero state — logo hidden, links centered */
+    #nav:not(.scrolled) .nav-logo {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      left: clamp(1.5rem, 5vw, 4.5rem);
+    }
+    #nav:not(.scrolled) .nav-inner {
+      justify-content: center;
+    }
+    #nav:not(.scrolled) .nav-burger {
+      position: absolute;
+      right: clamp(1.5rem, 5vw, 4.5rem);
+    }
     .nav-links {
       display: flex;
       align-items: center;
@@ -1100,11 +1116,6 @@
 <section id="hero">
   <div class="hero-main">
     <div class="hero-content">
-      <div class="hero-eyebrow">
-        <span class="t-label" style="color:var(--ink-faint)">Good HR</span>
-        <span class="dot"></span>
-        <span class="t-label" style="color:var(--ink-faint)">Fort Lauderdale, FL</span>
-      </div>
 
       <h1 class="t-hero hero-hed">
         Good HR is where<br />
